@@ -1,6 +1,6 @@
 <?php
 
-include "secret.php";
+include "info.php";
 
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", $db_username, $db_pw, $db_username);
 
