@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 // Include database login information
-include "secret.php";
+include "info.php";
 
 // Connect to database
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", $db_username, $db_pw, $db_username);
