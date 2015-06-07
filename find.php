@@ -1,5 +1,5 @@
 <?php
-include "secret.php";
+include "info.php";
 session_start();
 ?>
 
