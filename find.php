@@ -1,9 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-
 include "secret.php";
-
 session_start();
 ?>
 
@@ -39,11 +35,9 @@ session_start();
       <br><br>
       <h2>Explore tea sellers near you</h2><br>
       <form method="GET" action="find.php">
-        <input type="number" name="zipcode" id="zipfield" placeholder="Zip code">
-        <?php
-          echo "<input type='hidden' name='maps_key' id='maps_key' value='".$maps_key."'>"
-        ?>
+        <input type="text" name="zipcode" id="zipfield" placeholder="Zip code" onkeyup="showError(this.value)">
         <input type="submit" id="goBut" value="Go!">
+        <div id="error"></div>
       </form>
       <br><br>
     </div>
@@ -55,8 +49,8 @@ session_start();
           if(!empty($_GET['zipcode']))
           {
             echo "<iframe 
-                    width='450' 
-                    height='450' 
+                    width='500' 
+                    height='500' 
                     frameborder='0' 
                     style='border:0'
                     src='https://www.google.com/maps/embed/v1/search?key=".$maps_key."&q=tea+shops+near+".$_GET['zipcode']."'>

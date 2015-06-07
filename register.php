@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-
 session_start();
 
 // Include database login information
@@ -22,6 +19,7 @@ if(!$mysqli || $mysqli->connect_errno)
 <head>
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="register.js"></script>
+    <script type="text/javascript" src="reg2.js"></script>
     <title>TeaMe! - Sign Up</title>
 </head>
 <body>
@@ -69,7 +67,7 @@ if(!$mysqli || $mysqli->connect_errno)
             $regquery = mysqli_query($mysqli, "INSERT INTO user (username, password, email) VALUES('".$username."', '".$password."', '".$email."')");
             if($regquery)
             {
-              echo "<p>Account created. <a href='login.php' Click here to log in.</a></p>";
+              echo "<p>Account created. <a href='login.php'> Click here to log in.</a></p>";
             }
             else
             {
@@ -79,21 +77,24 @@ if(!$mysqli || $mysqli->connect_errno)
         }
 
         else
-        {
-          echo "<h2>Create an account</h2><br>
+        { ?>
+          <h2>Create an account</h2><br>
             <div id='form'>
               <form id='regForm' action='register.php' method='POST'>
                 <div class='fieldName'><p>Username</p></div><br>
-                <input type='text' name='username' id='username' placeholder='Username'><br>
+                <input type='text' name='username' id='username' placeholder='Username' onkeyup='showError(this.value, "username")'><br>
+                <div id='usernameError'></div>
                 <div class='fieldName'><p>Email Address</p></div><br>
-                <input type='text' name='email' id='email' placeholder='Email Address'><br>
+                <input type='text' name='email' id='email' placeholder='Email Address' onkeyup='showError(this.value, "email")'><br>
+                <div id='emailError'></div>
                 <div class='fieldName'><p>Password</p></div><br>
-                <input type='password' name='password' id='password' placeholder='Password'><br>
-                <div class='fieldName'><p>Confirm Password</p></div><br>
-                <input type='password' name='confirmpass' id='confirmpass' placeholder='Confirm Password'><br>
-                <input type='submit' value='Sign Up'>
+                <input type='password' name='password' id='password' placeholder='Password' onkeyup='showError(this.value, "password")'><br>
+                <div id='passwordError'></div>
+                <div id='error'></div>
+                <input type='submit' value='Sign Up' id='submitButton' onclick="return checkInput(); return false">
               </form>
-            </div>";
+            </div>
+          <?php
         }
       ?>
       <br><br>

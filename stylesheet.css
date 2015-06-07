@@ -280,3 +280,13 @@ tbody tr:hover {
 	display: block;
 	margin-left: 20%;
 }
+
+#error p, #usernameError p, #passwordError p, #emailError p {
+	display: block;
+	margin-left: 20%;
+	color: #d15c85;
+	font-weight: bold;
+	font-size: 80%;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
