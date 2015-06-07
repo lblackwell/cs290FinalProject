@@ -2,7 +2,7 @@
 session_start();
 
 // Include database login information
-include "secret.php";
+include "info.php";
 
 // Connect to database
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu", $db_username, $db_pw, $db_username);
